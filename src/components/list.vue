@@ -37,7 +37,7 @@ export default {
         font-size: 13px;
         font-weight: bold;
         padding-bottom: 10px;
-        color: black;
+        color: var(--black);
     }
     .product-list p{
         line-height: 2;
