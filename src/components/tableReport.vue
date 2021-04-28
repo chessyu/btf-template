@@ -33,32 +33,36 @@
 </template>
 
 <script>
-import { isMobile } from '../assets/js/help.js'
 import {company} from '../config'
 export default {
+    props:{
+        titleConfig:{
+            type:Array,
+            require:true
+        },
+        mobile:{
+            type:Boolean,
+            default:false
+        },
+        tableData:{
+            type:Array,
+            require:true
+        },
+        sum:{  //总价
+            type:Number,
+            require:true
+        },
+        
+    },
     data(){
         return{
             baseData:{},
-            mobile:false,
-            titleConfig:['产品名称','产品功能','单价','数量'],
-            tableData:[],
-            sum:1200
+            
         }
     },
     mounted(){
         this.baseData = company;
-        this.mobile = isMobile();
-        for(var i =0; i<10; i++){
-            this.tableData.push({
-                name:"产品名称"+ (i+1),
-                fun:'XXXXXXXXXXXXXXXXXXXXXXXXX',
-                unit:i+ 10,
-                number:1
-            })
-        }
-        window.onresize = ()=> {
-            this.mobile = isMobile();
-        }
+        
     },
 }
 </script>

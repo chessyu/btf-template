@@ -4,16 +4,16 @@
       <div class="company_logo">
         <img :src="require('@/assets/'+ baseData.logo +'.png')" v-if="baseData.logo" alt="">
       </div>
-      <span class="info-name">陈壮壮护肤方案</span>
+      <span class="info-name">护肤方案</span>
       <span class="code"> 
         <!-- <img id="barcode" />  -->
-        <vue-qr  id="barcode" :logoSrc="imageUrl" :text="codeValue" :logoScale="50" :size="300"></vue-qr>
+        <vue-qr  id="barcode" :logoSrc="require('@/assets/'+ baseData.logo +'.png')" v-if="baseData.logo"  :text="baseData.prexi" :logoScale="50" :size="300"></vue-qr>
        </span>
     </div>
     <div class="info">
       <div class="info-cont">
         <p>姓名：<span>陈壮壮</span></p>
-        <p>编号：<span>ABWDW20210304032100</span></p>
+        <p>编号：<span>{{baseData.prexi}}</span></p>
       </div>
       <div class="info-header">
         <img src="../assets/logo.png" alt="">
@@ -23,7 +23,7 @@
       <list :title="item.title" :data="item.data" v-for="(item,i) in data" :key="i" />
     </div>
     <div class="cace-table">
-      <table-report />
+      <table-report :titleConfig="titleConfig" :tableData="tableData" :mobile="mobile" :sum="1500" />
     </div>
     <div class="cace-report">
       <list :title="item.title" :data="item.data" v-for="(item,i) in tip" :key="i" />
@@ -36,7 +36,7 @@
 
 <script>
 import {company} from '../config'
-import {addWaterMarker, isMobile} from '../assets/js/help.js'
+import {addWaterMarker, isMobile, getDateTime} from '../assets/js/help.js'
 import List from '../components/list.vue'
 import tableReport from '../components/tableReport.vue'
 import VueQr from 'vue-qr'
@@ -66,6 +66,9 @@ export default {
   data(){
     return{
       baseData:{},
+      titleConfig:['产品名称','产品功能','单价','数量'],
+      tableData:[],
+      mobile:false,
       data :[
         {
           title:'肌肤症状:',
@@ -128,13 +131,18 @@ export default {
           ]
         },
       ],
-      codeValue:"ABWDW20210304032100",
-      imageUrl:require('../assets/logo.png')
+
     }
   },
   mounted(){
     addWaterMarker({content:"陈壮壮护理方案",container:this.$refs.contiter});
+    this.init();
     this.getCachData();
+    this.mobile = isMobile();
+
+    window.onresize = ()=> {
+        this.mobile = isMobile();
+    }
     // jsbarcode(
     //   '#barcode',
     //   'ABWDW20210304032100',
@@ -145,6 +153,17 @@ export default {
     // )
   },
   methods:{
+    init(){
+      for(var i =0; i<10; i++){
+        this.tableData.push({
+          name:"产品名称"+ (i+1),
+          fun:'XXXXXXXXXXXXXXXXXXXXXXXXX',
+          unit:i+ 10,
+          number:1
+        })
+      }
+
+    },
     toCanvase(){
       var _this = this;
       window.pageYOffset = 0;
@@ -155,7 +174,7 @@ export default {
       html2canvas(document.getElementById("contiter"),{scale:5}).then(function(canvas) {
         const link = document.createElement('a')
         link.href = canvas.toDataURL()
-        link.setAttribute('download', _this.codeValue + '.png')
+        link.setAttribute('download', _this.baseData.prexi + '.png')
         link.style.display = 'none'
         document.body.appendChild(link)
         link.click()
@@ -168,7 +187,8 @@ export default {
     },
     getCachData(){
       this.baseData = company;
-      //生成编号。
+      this.baseData.prexi = this.baseData.prexi +  getDateTime()
+      console.log(this.baseData)
     }
   }
 }

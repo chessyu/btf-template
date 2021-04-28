@@ -5,4 +5,5 @@ export const company = {
     autograph:'logo',                             //签名
     mechChapter:'logo',                        //机构章
     chapter:"XXXXXXX机构",              //机构名称
+    companyName:"公司名称",                    //公司名称       
 }
