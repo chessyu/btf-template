@@ -1,6 +1,6 @@
 export const company = {
     logo:'company_logo',            //logo
-    prexi:"ABCD",                                 //编码前缀
+    prexi:"SHRONLY",                                 //编码前缀
     waterMarker:"祡澜昵美肤研究院",                //水印文案
     autograph:'qm_logo',                             //签名
     mechChapter:'jg_logo_1',                        //机构章
