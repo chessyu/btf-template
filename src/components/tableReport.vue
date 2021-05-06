@@ -19,7 +19,7 @@
                             <span>导师签名：<img :src="require('@/assets/img/'+ baseData.autograph +'.png')"  v-if="baseData.logo" alt=""></span>
                         </div>
                         <div class="chapter">
-                            <span>护理机构：{{baseData.chapter}}<img :src="require('@/assets/img/'+ baseData.mechChapter +'.png')"  v-if="baseData.logo" alt=""> </span>
+                            <span>护理机构：<span class="botten">{{baseData.chapter}}</span><img :src="require('@/assets/img/'+ baseData.mechChapter +'.png')"  v-if="baseData.logo" alt=""> </span>
                         </div>
                         <div class="report-date">
                             <span>报告日期：2021-04-21</span>
@@ -160,7 +160,12 @@ export default {
     left: 64px;
     top: -54px;
  }
-
+ .table-report .autograph > td{
+    text-decoration: unset !important;
+}
+.botten{
+    text-decoration: underline;
+}
 
 
 </style>

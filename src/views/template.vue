@@ -28,7 +28,7 @@
       <list :title="item.title" :data="item.data" v-for="(item,i) in skinCareData" :key="i" />
     </div>
     <div class="cace-table">
-      <p  class="info-name">护肤方案</p>
+      <p  class="info-title">护肤方案</p>
       <table-report :titleConfig="titleConfig" :tableData="tableData" :mobile="mobile" />
     </div>
     <div class="cace-report">

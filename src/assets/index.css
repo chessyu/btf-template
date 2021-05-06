@@ -87,6 +87,11 @@ html,body{
     vertical-align: middle;
     object-fit: cover;
 }
+.info-title{
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
 
 
 .info p{
