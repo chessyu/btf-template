@@ -27,6 +27,8 @@ html,body{
     flex-direction: column;
     padding: 20px 30px;
     background-color: var(--basebgColor);
+    width: 680px;
+    margin: auto;
 }
 
 .header{
@@ -144,7 +146,7 @@ html,body{
 
 
 /* *********** 模版屏幕适配 ************ */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 522px) {
     .contiter{
         padding: 20px 10px;
     }

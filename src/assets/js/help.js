@@ -90,11 +90,11 @@ export function watermark(settings,container) {
     // 使用 ES6 的函数默认值方式设置参数的默认取值
     // 具体参见 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Default_parameters
     container = document.body,
-    width = '300px',
-    height = '300px',
+    width = '220px',
+    height = '220px',
     textAlign = 'center',
     textBaseline = 'middle',
-    font = "25px  'Microsoft YaHei'",
+    font = "16px  'Microsoft YaHei'",
     fillStyle = 'rgba(170, 170, 170, 0.2)',
     content = '请勿外传',
     rotate = '-30',

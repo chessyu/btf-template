@@ -129,7 +129,7 @@ export default {
 .next{
     position: absolute;
     bottom: 40px;
-    right: 60px;
+    right: 40px;
     padding: 10px 15px;
     background-color: var(--pink);
     color: #fff;
