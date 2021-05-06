@@ -7,8 +7,8 @@
                     {{configData.companyName}}
                 </div>
                 <Menu active-name="home" theme="dark" width="auto" :class="menuitemClasses">
-                    <MenuItem name="home">
-                        <Icon type="ios-navigate" :to="{name:'home'}"></Icon>
+                    <MenuItem name="home" :to="{name:'home'}">
+                        <Icon type="ios-navigate" ></Icon>
                         <span>首页</span>
                     </MenuItem>
                     <MenuItem name="care_program" :to="{name:'care'}">

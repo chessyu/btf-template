@@ -1,6 +1,6 @@
 <template>
 <!-- 护肤方案 -->
-    <div class="care-box">  
+    <div class="care-box" ref="careBox">  
         <RadioGroup  class="care-box-left" v-model="animal" @on-change="selectRadio">
             <Radio class="box-list" v-for="(item,index) in skinCareList" :key="index" :label="item.name">{{item.name}}</Radio>
         </RadioGroup>
@@ -18,42 +18,59 @@
                 <FormItem label="温馨提示">
                     <Input v-model="formItem.hint" type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="输入温馨提示..."></Input>
                 </FormItem>
+                <FormItem label="注意事项">
+                    <Input v-model="formItem.attentions" type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="输入注意事项..."></Input>
+                </FormItem>
                 <FormItem label="推荐产品" class="formItem">
-                    <Icon type="ios-add-circle-outline item-add" :size="23" />
-                    <div>
-                        <p></p>
-                        
-                    </div>
+                    <Icon type="ios-add-circle-outline item-add" :size="23" @click="showProductModal" />
+                    <ul class="product-list">
+                        <li v-for="(item,index) in productList" :key="index">
+                            <div class="product-name">{{item.name}}</div>
+                            <div class="product-content">{{item.content}}</div>
+                            <div class="product-price"> {{item.price}}</div>
+                            <div class="product-sub"> <InputNumber  v-model="item.sub" /></div>
+                        </li>
+                    </ul>
                 </FormItem>
             </Form>
-            <div class="next">
-               生成报告
-            </div>
+            <div class="next" @click="renderTemplate">生成报告</div>
         </div>
+        <product-modal  :value="selecProdct" @input="changeSelectProdct"  @selectProductData="selectProductData" />
+        
     </div>
 </template>
 
 <script>
 import { skinCare } from '@/assets/js/skinCare.js'
+import productModal from '@/components/productModal.vue'
+import {mapActions} from 'vuex'
 export default {
+    components:{
+        productModal
+    },
     data(){
         return {
+            selecProdct:false,
             skinCareList : [],
             animal:'敏感红血丝',
             formItem:{
                 symptom:'',
                 diagnosis:'',
                 solution:'',
-                hint:''
-            }
+                hint:'',
+                attentions:''
+            },
+            productList:[]
         }
     },
     mounted(){
         this.skinCareList = skinCare;
+       
         this.formItem.symptom = skinCare[0].symptom;
         this.formItem.diagnosis = skinCare[0].diagnosis;
         this.formItem.solution = skinCare[0].solution;
         this.formItem.hint = skinCare[0].hint;
+        this.formItem.attentions = skinCare[0].attentions;
     },
     methods:{
         selectRadio(val){
@@ -65,7 +82,24 @@ export default {
                     this.formItem.hint = item.hint;
                 }
             })
-        }
+        },
+        showProductModal(){
+            this.selecProdct = true;
+        },
+        changeSelectProdct(val){
+            this.selecProdct = val;
+        },
+        selectProductData(data){
+            this.productList = data;
+        },
+        renderTemplate(){
+            this.setSkinCareData({
+                formItem:this.formItem,
+                productList:this.productList
+            });
+            this.$router.push({name:'template'})
+        },
+        ...mapActions(["setSkinCareData"])
     }
 }
 </script>
@@ -113,6 +147,22 @@ export default {
    cursor: pointer;
 }
 .product-list{
-
+    list-style-type: none;
+}
+.product-list li{
+    display: flex;
+}
+.product-name{
+    width: 100px;
+}
+.product-content{
+    flex: 1;
+    overflow: hidden;
+}
+.product-price{
+    width: 100px;
+}
+.product-sub{
+    width: 150px;
 }
 </style>

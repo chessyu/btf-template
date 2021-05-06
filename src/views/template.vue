@@ -2,31 +2,36 @@
   <div class="contiter" ref="contiter" id="contiter">
     <div class="header">
       <div class="company_logo">
-        <img :src="require('@/assets/'+ baseData.logo +'.png')" v-if="baseData.logo" alt="">
+        <img :src="require('@/assets/img/'+ baseData.logo +'.jpg')" v-if="baseData.logo" alt="">
       </div>
       <span class="info-name">护肤方案</span>
       <span class="code"> 
         <!-- <img id="barcode" />  -->
-        <vue-qr  id="barcode" :logoSrc="require('@/assets/'+ baseData.logo +'.png')" v-if="baseData.logo"  :text="baseData.prexi" :logoScale="50" :size="300"></vue-qr>
+        <vue-qr  id="barcode" :logoSrc="require('@/assets/img/'+ baseData.logo +'.jpg')" v-if="baseData.mechChapter"  :text="baseData.prexi" :logoScale="50" :size="300"></vue-qr>
        </span>
     </div>
     <div class="info">
       <div class="info-cont">
-        <p>姓名：<span>陈壮壮</span></p>
+        <p class="hoverName">姓名：
+          <span class="hoverSpan">{{currtName}}</span>
+          <input class="hoverInput" type="text" v-model="currtName" >
+        </p>
         <p>编号：<span>{{baseData.prexi}}</span></p>
       </div>
       <div class="info-header">
-        <img src="../assets/logo.png" alt="">
+        <!-- <img src="../assets/logo.png" alt=""> -->
+        <!-- <a href="javascript;"> <input type="file"></a> -->
+       
       </div>
     </div>
     <div class="cace-report">
-      <list :title="item.title" :data="item.data" v-for="(item,i) in data" :key="i" />
+      <list :title="item.title" :data="item.data" v-for="(item,i) in skinCareData" :key="i" />
     </div>
     <div class="cace-table">
-      <table-report :titleConfig="titleConfig" :tableData="tableData" :mobile="mobile" :sum="1500" />
+      <table-report :titleConfig="titleConfig" :tableData="tableData" :mobile="mobile" />
     </div>
     <div class="cace-report">
-      <list :title="item.title" :data="item.data" v-for="(item,i) in tip" :key="i" />
+      <list :title="item.title" :data="item.data" v-for="(item,i) in skinCareDataAttentions" :key="i" />
     </div>
     <div class="btn-box">
       <span class="btn" @click="toCanvase">生成海报</span>
@@ -41,6 +46,7 @@ import List from '../components/list.vue'
 import tableReport from '../components/tableReport.vue'
 import VueQr from 'vue-qr'
 import html2canvas from 'html2canvas'
+import {mapGetters} from 'vuex'
 // import jsbarcode from 'jsbarcode'
 export default {
   name:"hf-template",
@@ -69,79 +75,21 @@ export default {
       titleConfig:['产品名称','产品功能','单价','数量'],
       tableData:[],
       mobile:false,
-      data :[
-        {
-          title:'肌肤症状:',
-          data:[
-            {
-              content:'aaaajalksdfjlas;kfjas;lfkjas;dfkkjkj;l'
-            }
-          ]
-        },
-        {
-          title:'问题诊断:',
-          data:[
-            {
-              content:'aaaajalksdfjlas;kfjas;lfkjas;dfkkjkj;l'
-            }
-          ]
-        },
-        {
-          title:'解决方案:',
-          data:[
-            {
-              content:'aaaajalksdfjlas;kfjas;lfkjas;dfkkjkj;l'
-            },
-            {
-              content:'aaaajalksdfjlas;kfjas;lfkjas;dfkkjkj;l'
-            },
-            {
-              content:'aaaajalksdfjlas;kfjas;lfkjas;dfkkjkj;l'
-            },
-          ]
-        },
-        {
-          title:'温馨提示:',
-          data:[
-            {
-              content:'aaaajalksdfjlas;kfjas;lfkjas;dfkkjkj;l'
-            },
-            {
-              content:'aaaajalksdfjlas;kfjas;lfkjas;dfkkjkj;l'
-            },
-            {
-              content:'aaaajalksdfjlas;kfjas;lfkjas;dfkkjkj;l'
-            }
-          ]
-        },
-      ],
-      tip:[
-        {
-          title:'注意事项:',
-          data:[
-            {
-              content:'aaaajalksdfjlas;kfjas;lfkjas;dfkkjkj;l'
-            },
-            {
-              content:'aaaajalksdfjlas;kfjas;lfkjas;dfkkjkj;l'
-            },
-            {
-              content:'aaaajalksdfjlas;kfjas;lfkjas;dfkkjkj;l'
-            }
-          ]
-        },
-      ],
+      skinCareData:[],
+      skinCareDataAttentions:[],
+      currtName:'陈壮壮',
 
     }
   },
   mounted(){
-    addWaterMarker({content:"陈壮壮护理方案",container:this.$refs.contiter});
-    this.init();
+    
     this.getCachData();
-    this.mobile = isMobile();
+    addWaterMarker({content:this.baseData.waterMarker,container:this.$refs.contiter});
 
+    this.init();
+    this.mobile = isMobile();
     window.onresize = ()=> {
-        this.mobile = isMobile();
+      this.mobile = isMobile();
     }
     // jsbarcode(
     //   '#barcode',
@@ -154,13 +102,53 @@ export default {
   },
   methods:{
     init(){
-      for(var i =0; i<10; i++){
-        this.tableData.push({
-          name:"产品名称"+ (i+1),
-          fun:'XXXXXXXXXXXXXXXXXXXXXXXXX',
-          unit:i+ 10,
-          number:1
-        })
+
+      this.tableData = this.getSkinCareData.productList.map(item => {
+        return {
+          name:item.name,
+          fun : item.content,
+          unit:item.price,
+          number:item.sub
+        }
+      })
+      
+
+      for( var key in  this.getSkinCareData.formItem){
+        console.log(1)
+        switch(key){
+          case "symptom":
+            this.skinCareData.push(
+              {
+                title:"肌肤症状",
+                data:this.getSkinCareData.formItem[key]
+              }
+            )
+            break;
+          case "diagnosis":
+           this.skinCareData.push( {
+              title:"问题诊断",
+              data:this.getSkinCareData.formItem[key]
+            })
+             break;
+          case "solution":
+           this.skinCareData.push( {
+              title:"解决方案",
+              data:this.getSkinCareData.formItem[key].split('\n')
+            })
+            break;
+          case "hint":
+           this.skinCareData.push( {
+              title:"温馨提示",
+              data:this.getSkinCareData.formItem[key].split('\n')
+            })
+             break;
+          case "attentions":
+            this.skinCareDataAttentions.push({
+              title:"注意事项",
+              data:this.getSkinCareData.formItem[key].split('\n')
+            })
+             break;
+        }
       }
 
     },
@@ -171,7 +159,7 @@ export default {
       document.body.scrollTop = 0;
       document.getElementsByClassName('btn')[0].style.display="none";
 
-      html2canvas(document.getElementById("contiter"),{scale:5}).then(function(canvas) {
+      html2canvas(document.getElementById("contiter"),{scale:4}).then(function(canvas) {
         const link = document.createElement('a')
         link.href = canvas.toDataURL()
         link.setAttribute('download', _this.baseData.prexi + '.png')
@@ -189,7 +177,23 @@ export default {
       this.baseData = company;
       this.baseData.prexi = this.baseData.prexi +  getDateTime()
       console.log(this.baseData)
+    },
+    handleSuccess(){
+
+    },
+    handleFormatError(){
+
+    },
+    handleMaxSize(){
+
+    },
+    handleBeforeUpload(){
+
     }
+  },
+  computed:{
+    ...mapGetters(['getSkinCareData']),
+    
   }
 }
 </script>

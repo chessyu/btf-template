@@ -42,7 +42,7 @@ html,body{
 }
 
 .header .company_logo img{
-    width: 40px;
+    width: 125px;
     object-fit: cover;
     position: absolute;
     top: 50%;
@@ -91,6 +91,7 @@ html,body{
     font-size: 13px;
     margin: 15px 0;
     color: var( --fontColor);
+    position: relative;
 }
 .info p>span{
     font-weight: bold;
@@ -113,6 +114,24 @@ html,body{
     cursor: pointer;
 }
 
+.hoverName:hover .hoverSpan{
+    display: none;
+}
+.hoverName:hover .hoverInput{
+    display: block;
+}
+.hoverInput{
+    display: none;
+    width: 20%;
+    outline: none;
+    position: absolute;
+    top: 0;
+    left: 43px;
+    border: none;
+    font-size: 14px;
+    font-weight: bold;
+    color: var( --fontColor);
+}
 
 
 

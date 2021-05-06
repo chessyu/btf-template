@@ -44,7 +44,7 @@ export default{
                    if(this.formInline.user !== 'admin' || this.formInline.password !== '123456'){
                     this.$Message.error("账号密码不正确");
                    }else{
-                    this.$router.push({name:'template'})
+                    this.$router.push({name:'layout'})
                    }
                 
                 }

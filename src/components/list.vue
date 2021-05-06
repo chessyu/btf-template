@@ -1,7 +1,10 @@
 <template>
     <div class="product-list" >
         <h6>{{title}}</h6>
-        <p v-for="(item,index) in data" :key="index">{{item.content}}</p>
+        <template v-if="isArray">
+            <p v-for="(item,index) in data" :key="index" >{{item}}</p>
+        </template>
+        <p v-else>{{data}}</p>
     </div>
     
 </template>
@@ -14,13 +17,18 @@ export default {
             require:true
         },
         data:{
-            type:Array,
+            type:String | Array,
             require:true
         }
     },
     data(){
         return{
 
+        }
+    },
+    computed:{
+        isArray(){
+            return this.data instanceof Array ;
         }
     }
 }

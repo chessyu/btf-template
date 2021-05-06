@@ -203,3 +203,22 @@ export function getDateTime(  type = 1,hasWeek=false){
                   break;
               }
 }
+
+
+/**
+ * 模糊查询
+ * @param {*} 原数组 
+ * @param {*} 需要匹配值 
+ * @param {*} 根据哪个字段进行匹配
+ * @returns 
+ */
+ export function fuzzyQuery(list,colmn, keyWord) {
+  var reg =  new RegExp(keyWord);
+  var arr = [];
+  for (var i = 0; i < list.length; i++) {
+    if (reg.test(list[i][colmn])) {
+      arr.push(list[i]);
+    }
+  }
+  return arr;
+}

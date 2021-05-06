@@ -4215,3 +4215,127 @@ export const skinCare = [{
 		"departmentName": "总公司"
 	}
 }]
+
+
+export const productList = [
+	{
+		name:"产品名称一",
+		content:"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+		price :300
+	},
+	{
+		name:"产品名称二",
+		content:"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+		price :400
+	},
+	{
+		name:"产品名称三",
+		content:"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+		price :500
+	},
+	{
+		name:"产品名称四",
+		content:"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+		price :600
+	},
+	{
+		name:"产品名称五",
+		content:"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+		price :700
+	},
+	{
+		name:"产品名称六",
+		content:"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+		price :800
+	},
+	{
+		name:"产品名称一",
+		content:"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+		price :300
+	},
+	{
+		name:"产品名称二",
+		content:"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+		price :400
+	},
+	{
+		name:"产品名称三",
+		content:"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+		price :500
+	},
+	{
+		name:"产品名称四",
+		content:"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+		price :600
+	},
+	{
+		name:"产品名称五",
+		content:"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+		price :700
+	},
+	{
+		name:"产品名称六",
+		content:"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+		price :800
+	},
+	{
+		name:"产品名称一",
+		content:"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+		price :300
+	},
+	{
+		name:"产品名称二",
+		content:"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+		price :400
+	},
+	{
+		name:"产品名称三",
+		content:"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+		price :500
+	},
+	{
+		name:"产品名称四",
+		content:"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+		price :600
+	},
+	{
+		name:"产品名称五",
+		content:"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+		price :700
+	},
+	{
+		name:"产品名称六",
+		content:"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+		price :800
+	},
+	{
+		name:"产品名称一",
+		content:"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+		price :300
+	},
+	{
+		name:"产品名称二",
+		content:"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+		price :400
+	},
+	{
+		name:"产品名称三",
+		content:"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+		price :500
+	},
+	{
+		name:"产品名称四",
+		content:"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+		price :600
+	},
+	{
+		name:"产品名称五",
+		content:"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+		price :700
+	},
+	{
+		name:"产品名称六",
+		content:"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+		price :800
+	},
+]

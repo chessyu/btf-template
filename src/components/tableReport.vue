@@ -2,7 +2,7 @@
     <table :class="['table-report', mobile ? 'mobeil-table':'']">
         <thead>
             <tr class="table-header">
-                <th v-for="(title,i) in titleConfig" :key="i" :class="[mobile ? 'mobeil-thead':'']">{{title}}</th>
+                <th v-for="(title,i) in titleConfig" :key="i" :class="[mobile ? 'mobeil-thead':'']">{{ i == 2 ? title +'(¥)' : title}}</th>
             </tr>
         </thead>
         <tbody>
@@ -16,10 +16,10 @@
                 <td colspan="4">
                     <div class="td-autograph">
                         <div class="tutor">
-                            <span>导师签名：<img :src="require('@/assets/'+ baseData.autograph +'.png')"  v-if="baseData.logo" alt=""></span>
+                            <span>导师签名：<img :src="require('@/assets/img/'+ baseData.autograph +'.png')"  v-if="baseData.logo" alt=""></span>
                         </div>
                         <div class="chapter">
-                            <span>护理机构：xxxx护理机构 <img :src="require('@/assets/'+ baseData.mechChapter +'.png')"  v-if="baseData.logo" alt=""> </span>
+                            <span>护理机构：{{baseData.chapter}}<img :src="require('@/assets/img/'+ baseData.mechChapter +'.png')"  v-if="baseData.logo" alt=""> </span>
                         </div>
                         <div class="report-date">
                             <span>报告日期：2021-04-21</span>
@@ -48,16 +48,22 @@ export default {
             type:Array,
             require:true
         },
-        sum:{  //总价
-            type:Number,
-            require:true
-        },
+        
         
     },
     data(){
         return{
             baseData:{},
             
+        }
+    },
+    computed:{
+        sum(){
+            var sub = 0;
+            this.tableData.forEach(item => {
+                sub += Number(item.unit) * item.number
+            })
+            return sub;
         }
     },
     mounted(){
@@ -146,12 +152,13 @@ export default {
     position: relative;
 }
 .tutor>span>img, .chapter>span>img{
-    width: 50px;
+    width: 100px;
     position: absolute;
-    top: -18px;
+    top: -11px;
 }
  .chapter>span>img{
-    left: 70px;
+    left: 64px;
+    top: -54px;
  }
 
 
