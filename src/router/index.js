@@ -48,7 +48,7 @@ const routes = [
 const router = new VueRouter({
   routes,
   mode:'history',
-  // base:'/btf-template'
+  base:'/btf-template/'
 })
 
 export default router
