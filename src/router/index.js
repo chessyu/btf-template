@@ -12,21 +12,21 @@ const routes = [
   {
     path: '/layout',
     name: 'layout',
-    redirect:'/layout/home',
+    redirect:'/home',
     component: () => import(/* webpackChunkName: "layout" */ '../views/layout/layout.vue'),
     children:[
       {
-        path: '/layout/home',
+        path: '/home',
         name: 'home',
         component: () => import(/* webpackChunkName: "home" */ '../views/home/home.vue')
       },
       {
-        path: '/layout/care',
+        path: '/care',
         name: 'care',
         component: () => import(/* webpackChunkName: "care" */ '../views/care/care.vue')
       },
       {
-        path: '/layout/private',
+        path: '/private',
         name: 'private',
         component: () => import(/* webpackChunkName: "private" */ '../views/private/private.vue')
       },
