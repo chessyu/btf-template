@@ -1,7 +1,7 @@
 const {resolve} = require('path')
 
 module.exports={
-    publicPath:process.env.NODE_ENV === 'production' ? './btf-template' :'./',
+    publicPath:process.env.NODE_ENV === 'production' ? './' :'./',
     chainWebpack:(config)=>{
         config.resolve.alias
         .set('@',resolve('src'))
