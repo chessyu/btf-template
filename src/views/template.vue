@@ -14,14 +14,18 @@
       <div class="info-cont">
         <p class="hoverName">姓名：
           <span class="hoverSpan">{{currtName}}</span>
-          <input class="hoverInput" type="text" v-model="currtName" >
+          <input class="hoverInput" type="text" @click="clearName" v-model="currtName" >
         </p>
-        <p>编号：<span>{{baseData.prexi}}</span></p>
+        <p class="info-code">编号：<span>{{baseData.prexi}}</span></p>
       </div>
       <div class="info-header">
         <!-- <img src="../assets/logo.png" alt=""> -->
-        <!-- <a href="javascript;"> <input type="file"></a> -->
-       
+        <div :class="['file-box', !base64Image ? 'file-null':'']">
+          <Icon class="file-icon" type="md-cloud-upload" :size="25" v-if="!base64Image" />
+          <img class="file-img" :src="base64Image" alt="" v-else >
+          <input type="file" class="upload_file" id="upload_file">
+        </div>
+        
       </div>
     </div>
     <div class="cace-report">
@@ -78,8 +82,8 @@ export default {
       mobile:false,
       skinCareData:[],
       skinCareDataAttentions:[],
-      currtName:'陈壮壮',
-
+      currtName:'输入客户姓名',
+      base64Image:'',
     }
   },
   mounted(){
@@ -92,6 +96,7 @@ export default {
     window.onresize = ()=> {
       this.mobile = isMobile();
     }
+    this.handleUpload();
     // jsbarcode(
     //   '#barcode',
     //   'ABWDW20210304032100',
@@ -179,17 +184,41 @@ export default {
       this.baseData.prexi = this.baseData.prexi +  getDateTime()
       console.log(this.baseData)
     },
-    handleSuccess(){
+    handleUpload(){
+      var _this = this;
+      var upload = document.getElementById("upload_file");
+      const ACCEPT = ['image/jpg','image/png','image/jpeg'];  //支持上传文件类型
+      // const MAXSIZE = 1024 * 1024;                                        //文件大小
+      // const MAXSIZE_STR = "1MB"
+      upload.addEventListener("change",function(e){
+        const [file] = e.target.files;
+        if(!file){
+            return;
+        }
+        const {type:fileType, size: fileSize} = file;  //重新定义属性名
 
+        if(!ACCEPT.includes(fileType)){  //判断文件类型
+          alert("不支持["+fileType+"]文件类型！")
+          upload.value = "";
+          return;
+        }
+        // if(fileSize  > MAXSIZE){   //判断文件大小
+        //   alert(`文件超出${MAXSIZE_STR}`)
+        //   upload.value = "";
+        //   return;
+        // }
+        
+        let reader = new FileReader();
+        reader.addEventListener('load',function(ev){
+          const base64Image = ev.target.result;
+          _this.base64Image = base64Image;
+          reader = null;
+        })
+        reader.readAsDataURL(file);
+      })
     },
-    handleFormatError(){
-
-    },
-    handleMaxSize(){
-
-    },
-    handleBeforeUpload(){
-
+    clearName(){
+      this.currtName = "";
     }
   },
   computed:{
