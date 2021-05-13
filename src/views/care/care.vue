@@ -252,10 +252,15 @@ export default {
             }
         },
         change(type,value){
-            if(value === ''){
-                this.tableData = productList;
-            }
-            this.tableData = fuzzyQuery(productList,type,value);
+            
+            this.tableData = productList.filter(item => !value || item[type].includes(value));
+            this.tableData.forEach(item => {
+                this.selectionData.forEach(keys => {
+                    if(item.id === keys.id){
+                        item._checked = true;
+                    }
+                })
+            })
         },
         selectData(selection){
             this.selectionData = selection;
