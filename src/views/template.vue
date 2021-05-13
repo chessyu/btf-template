@@ -4,19 +4,18 @@
       <div class="company_logo">
         <img :src="require('@/assets/img/'+ baseData.logo +'.jpg')" v-if="baseData.logo" alt="">
       </div>
-      <span class="info-name">护肤方案</span>
+      <input type='text' :value="currtName + '护肤方案'" class="info-name" />
       <span class="code"> 
         <!-- <img id="barcode" />  -->
-        <vue-qr  id="barcode" :logoSrc="require('@/assets/img/'+ baseData.logo +'.jpg')" v-if="baseData.mechChapter"  :text="baseData.prexi" :logoScale="50" :size="300"></vue-qr>
+        <vue-qr  id="barcode" :logoSrc="require('@/assets/img/'+ baseData.logo +'.jpg')" v-if="baseData.mechChapter"  :text="codeNo" :logoScale="50" :size="300"></vue-qr>
        </span>
     </div>
     <div class="info">
       <div class="info-cont">
         <p class="hoverName">姓名：
-          <span class="hoverSpan">{{currtName}}</span>
-          <input class="hoverInput" type="text" @click="clearName" v-model="currtName" >
+          <input class="hoverInput" type="text" v-model="currtName" >
         </p>
-        <p class="info-code">编号：<span>{{baseData.prexi}}</span></p>
+        <p class="info-code">编号：<span>{{codeNo}}</span></p>
       </div>
       <div class="info-header">
         <!-- <img src="../assets/logo.png" alt=""> -->
@@ -34,6 +33,7 @@
     <div class="cace-table">
       <p  class="info-title">护肤方案</p>
       <table-report :titleConfig="titleConfig" :tableData="tableData" :mobile="mobile" />
+      <img class="table-report-img" :src="require('@/assets/img/'+ baseData.mechChapter +'.png')"  v-if="baseData.logo" alt="">
     </div>
     <div class="cace-report">
       <list :title="item.title" :data="item.data" v-for="(item,i) in skinCareDataAttentions" :key="i" />
@@ -77,17 +77,25 @@ export default {
   data(){
     return{
       baseData:{},
-      titleConfig:['产品名称','产品功能','单价','数量'],
+      titleConfig:['产品名称','产品功效','单价','数量'],
       tableData:[],
       mobile:false,
       skinCareData:[],
       skinCareDataAttentions:[],
       currtName:'输入客户姓名',
       base64Image:'',
+      codeNo:'',
+      hasData : false
+    }
+  },
+  created(){
+    if(this.getSkinCareData.productList === undefined){
+      this.$router.push({name:'care'});
+      this.hasData = true;
     }
   },
   mounted(){
-    
+    if(this.hasData) return;
     this.getCachData();
     addWaterMarker({content:this.baseData.waterMarker,container:this.$refs.contiter});
 
@@ -112,15 +120,15 @@ export default {
       this.tableData = this.getSkinCareData.productList.map(item => {
         return {
           name:item.name,
-          fun : item.content,
-          unit:item.price,
+          fun : item.features,
+          unit: '¥' + item.price +'.00',
           number:item.sub
         }
       })
       
 
       for( var key in  this.getSkinCareData.formItem){
-        console.log(1)
+
         switch(key){
           case "symptom":
             this.skinCareData.push(
@@ -168,7 +176,7 @@ export default {
       html2canvas(document.getElementById("contiter"),{scale:4}).then(function(canvas) {
         const link = document.createElement('a')
         link.href = canvas.toDataURL()
-        link.setAttribute('download', _this.baseData.prexi + '.png')
+        link.setAttribute('download', _this.codeNo + '.png')
         link.style.display = 'none'
         document.body.appendChild(link)
         link.click()
@@ -181,8 +189,7 @@ export default {
     },
     getCachData(){
       this.baseData = company;
-      this.baseData.prexi = this.baseData.prexi +  getDateTime()
-      console.log(this.baseData)
+      this.codeNo = this.baseData.prexi +  getDateTime();
     },
     handleUpload(){
       var _this = this;
@@ -217,9 +224,7 @@ export default {
         reader.readAsDataURL(file);
       })
     },
-    clearName(){
-      this.currtName = "";
-    }
+
   },
   computed:{
     ...mapGetters(['getSkinCareData']),

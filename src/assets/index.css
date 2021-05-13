@@ -12,10 +12,10 @@ html,body{
     --basebgColor:#fefefe;
     --borderColor:#ccc;
     --fontColor:#808080;
-    --pink: #d61464;
+    --pink: #c72dc2;
     --wite:#fff;
     --black:#000;
-    --black-700:rgb(140 140 140);
+    --black-700:#e4e4e4;
     --red:#b72f2f;
     --blue:#4e99f0;
 
@@ -59,6 +59,8 @@ html,body{
     font-weight: bold;
     color: var(--black);
     line-height: 74px;
+    border: none;
+    outline: none;
 }
 
 .header .code{
@@ -71,7 +73,7 @@ html,body{
 
 
 .info{
-    padding: 20px 0;
+    padding: 15px 0;
     text-align: left;
     border-bottom: 2px solid var( --borderColor);
     display: flex;
@@ -111,12 +113,13 @@ html,body{
     font-size: 14px;
 }
 .cace-table{
-    overflow: auto;
     width: 100%;
+    position: relative;
     /* max-height: 500px; */
 }
 .btn-box{
     position: relative;
+    margin-top: 35px;
 }
 .btn{
     display: block;
@@ -127,14 +130,7 @@ html,body{
     cursor: pointer;
 }
 
-.hoverName:hover .hoverSpan{
-    display: none;
-}
-.hoverName:hover .hoverInput{
-    display: block;
-}
 .hoverInput{
-    display: none;
     width: 20%;
     outline: none;
     position: absolute;
@@ -152,7 +148,7 @@ html,body{
     position: relative;
 }
 .file-null{
-    border: 1px dashed;
+    border: 1px dashed var(--black-700);
     cursor: pointer;
     border-radius: 5px;
 }
@@ -162,7 +158,7 @@ html,body{
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    
+    color:  var(--black-700);
 }
 .upload_file{
     width: 100%;
@@ -175,10 +171,16 @@ html,body{
 .file-img{
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    /*object-fit: cover; */
     position: absolute;
 }
 
+.table-report-img{
+    position: absolute;
+    bottom: -25px;
+    left: 304px;
+    width: 85px;
+}
 
 
 

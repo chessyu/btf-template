@@ -37,14 +37,14 @@ export default {
 
 <style>
     .product-list{
-        padding: 20px 0;
+        padding-top: 10px;
         color: var(--fontColor);
         text-align: left;
     }
     .product-list h6{
         font-size: 13px;
         font-weight: bold;
-        padding-bottom: 10px;
+        padding-bottom: 5px;
         color: var(--black);
     }
     .product-list p{

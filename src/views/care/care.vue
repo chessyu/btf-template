@@ -1,6 +1,6 @@
 <template>
 <!-- 护肤方案 -->
-    <div>
+    <div class="care-contiter">
         <steps :current="current" :stepsData="stepsData" />
 
         <div class="care-box" ref="careBox" v-show="current == 0">  
@@ -50,24 +50,49 @@
                 </Select>
                 
             </div>
-            <Table :height="tableHeight"  stripe :columns="titleConfig" :data="tableData" @on-selection-change="selectData">
-                <template slot-scope="{ row }" slot="features">
+            <Table class="care-table" :height="tableHeight" stripe :columns="titleConfig" :data="tableData" @on-selection-change="selectData">
+                <!-- <template slot-scope="{ row,index }" slot="features">
                     <div @click="chckTextarea(row)" v-show="!row.edit">
                         {{row.features}}
                     </div>
-                    <Input v-show="row.edit" v-model="row.features" type="textarea" :autosize="{minRows: 2,maxRows: 5}" @on-blur="onBlur(row)" ></Input>
+                    <Input v-show="row.edit" v-model="row.features" type="textarea" :autosize="{minRows: 2,maxRows: 5}" @on-blur="onBlur(row,index,'features')" ></Input>
                 </template>
 
-                <template slot-scope="{ row }" slot="weight">
-                    <RadioGroup v-model="row.Milligram" @on-change="radioChange(row)">
+                <template slot-scope="{ row,$index }" slot="weight">
+                    <RadioGroup v-model="row.Milligram" @on-change="radioChange(row,$index)">
                         <Radio :label="keys.Milligram" v-for="(keys,index) in row.weight" :key="index" style="display:'flex'" >
                             <span class="content-span">规格：{{keys.Milligram}}g</span><span  class="content-span">价格：¥{{keys.price}}.00</span>
                         </Radio>
                     </RadioGroup>
                 </template>
+
+                <template  slot-scope="{ row,index}" slot="sub">
+                    <InputNumber  v-model="row.sub" :min="1" @on-blur="onBlur(row,index,'sub')" />
+                </template>
+                 -->
             </Table>
         </div>
 
+        <div class="care-prodct" v-show="current == 2">
+            <ul class="product-ul">
+                <li v-for="(item) in selectionData" :key="item.id" class="flex">
+                    <div class="flex-name">{{item.name}}</div>
+                    <div class=" prodct-ul-features">
+                        <Input v-model="item.features" type="textarea" :autosize="{minRows: 2,maxRows: 5}"  ></Input>
+                    </div>
+                    <div class="prodct-ul-weight">
+                        <RadioGroup v-model="item.Milligram" @on-change="radioChange(item)">
+                            <Radio :label="item.Milligram" v-for="(item,index) in item.weight" :key="index" style="display:'flex'" >
+                                <span class="content-span">规格：{{item.Milligram}}g</span><span  class="content-span">价格：¥{{item.price}}.00</span>
+                            </Radio>
+                        </RadioGroup>
+                    </div>
+                    <div  class="prodct-ul-sub">
+                        <InputNumber  v-model="item.sub" :min="1"  />
+                    </div>
+                </li>
+            </ul>
+        </div>
 
         <div class="bottom-box">
             <div class="next pre" @click="pre" v-show="current > 0">上一步</div>
@@ -100,6 +125,7 @@ export default {
                 hint:'',
                 attentions:''
             },
+
             productList:[],
             stepsData:[
                 {
@@ -108,11 +134,11 @@ export default {
                 },
                 {
                     current:1,
-                    title:'修复产品'
+                    title:'选择产品'
                 },
                 {
                     current:2,
-                    title:'生成模版'
+                    title:'编辑产品'
                 },
             ],
              titleConfig:[
@@ -129,27 +155,34 @@ export default {
                 {
                     title: '产品功效',
                     key: 'features',
-                    slot:'features'
+                    minWidth:300
+                    // slot:'features'
                 },
                 {
                     title: '规格/价格',
                     key: 'weight',
                     width: 240,
-                    slot:'weight',
-                    // render:function(h,{row,column,index}){
-                    //     return h('div',{
+                    // slot:'weight',
+                    render:function(h,{row,column,index}){
+                        return h('div',{
                            
-                    //     },row.weight.map(item=>{
-                    //         return h('p',{
-                    //             style:{
-                    //                 display:'flex'
-                    //             },
-                    //             domProps: {
-                    //                 innerHTML: `<span class="content-span">规格：${item.Milligram}g</span><span  class="content-span">价格：¥${item.price}.00</span>`
-                    //             },
-                    //         })
-                    //     }))
-                    // }
+                        },row.weight.map(item=>{
+                            return h('p',{
+                                style:{
+                                    display:'flex'
+                                },
+                                domProps: {
+                                    innerHTML: `<span class="content-span">规格：${item.Milligram}g</span><span  class="content-span">价格：¥${item.price}.00</span>`
+                                },
+                            })
+                        }))
+                    }
+                },
+                {
+                    title:"数量",
+                    key:"sub",
+                    width:100,
+                    // slot:'sub'
                 },
                 {
                     title:"系列",
@@ -175,7 +208,8 @@ export default {
         this.formItem.hint = skinCare[0].hint;
         this.formItem.attentions = skinCare[0].attentions;
 
-        this.tableData = productList.map(item => {
+        this.tableData = productList.map((item,index) => {
+            item.id = (index +1),
             item.sub = 1;
             item.edit = false;
             item.Milligram = item.weight[0].Milligram;
@@ -199,15 +233,6 @@ export default {
                 }
             })
         },
-        // showProductModal(){
-        //     this.selecProdct = true;
-        // },
-        // changeSelectProdct(val){
-        //     this.selecProdct = val;
-        // },
-        // selectProductData(data){
-        //     this.productList = data;
-        // },
         renderTemplate(){
             this.setSkinCareData({
                 formItem:this.formItem,
@@ -232,32 +257,26 @@ export default {
             }
             this.tableData = fuzzyQuery(productList,type,value);
         },
-        selectData(selection,row){
+        selectData(selection){
             this.selectionData = selection;
         },
-        chckTextarea(row){
 
-            row.edit = true;
-            this.$nextTick(()=>{
-                window.event.target.parentNode.children[1].children[0].focus();
-            })
-            
-        },
-        onBlur(row){
-            row.edit = false;
-        },
+
         radioChange(row){
-            this.tableData[row._index].price = row.weight.filter(item=>item.Milligram == row.Milligram)[0].price;
-            this.tableData[row._index].Milligram = row.Milligram;
+            row.price = row.weight.filter(item=>item.Milligram == row.Milligram)[0].price;
+            
         }
     }
 }
 </script>
 
 <style>
+.care-contiter{
+    height: 100%;
+    overflow-y: auto;
+}
 .care-box{
     width: 100%;
-    height: 100%;
     display: flex;
 }
 .care-box-left{
@@ -348,5 +367,39 @@ export default {
     float: left;
     margin: 0 20px;
 
+}
+.care-table{
+    width: 100%;
+}
+.product-ul{
+    list-style-type: none;
+    width: 100%;
+}
+.product-ul > li {
+    padding: 15px 0px;
+    margin: 15px 0;
+    border-bottom: 1px dotted #ccc;
+}
+.product-ul .flex{
+    display: flex;
+}
+.flex-name{
+    width: 200px;
+    text-align: right;
+    padding-right: 15px;
+}
+.prodct-ul-features{
+    flex: 1;
+    min-width: 400px;
+    padding: 0 15px;
+}
+.prodct-ul-weight{
+    width: 250px;
+    padding: 0 15px;
+    text-align: left;
+}
+.prodct-ul-sub{
+    width: 100px;
+    padding: 0 15px;
 }
 </style>

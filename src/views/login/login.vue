@@ -15,7 +15,7 @@
                 <FormItem>
                     <div class="comp_text">
                         <Icon class="logo" custom="iconfont icon-logo_ysstech"  style="font-size:30px"/>
-                        <span class="logo_name">Administration</span>
+                        <span class="logo_name">祡澜昵美肤</span>
                     </div>
                 </FormItem>
                 <FormItem prop="user">

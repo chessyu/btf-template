@@ -4,7 +4,8 @@ export default {
     data () {
         return {
             isCollapsed: false,
-            configData:{}
+            configData:{},
+            activeName:'home'
         }
     },
     computed: {
@@ -19,7 +20,7 @@ export default {
                 'menu-item',
                 this.isCollapsed ? 'collapsed-menu' : ''
             ]
-        }
+        },
     },
     mounted(){
         this.configData = company;
@@ -27,6 +28,14 @@ export default {
     methods: {
         collapsedSider () {
             this.$refs.side1.toggleCollapse();
+        },
+        dropdownChange(name){
+            if(name == 'loginOut'){
+                this.$router.push({name:'login'})
+            }
+        },
+        selectMenu(path){
+            this.activeName = path;
         }
     }
 }

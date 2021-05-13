@@ -19,10 +19,10 @@
                             <span>导师签名：<img :src="require('@/assets/img/'+ baseData.autograph +'.png')"  v-if="baseData.logo" alt=""></span>
                         </div>
                         <div class="chapter">
-                            <span>护理机构：<span class="botten">{{baseData.chapter}}</span><img :src="require('@/assets/img/'+ baseData.mechChapter +'.png')"  v-if="baseData.logo" alt=""> </span>
+                            <span>护理机构：<span class="botten">{{baseData.chapter}}</span> </span>
                         </div>
                         <div class="report-date">
-                            <span>报告日期：2021-04-21</span>
+                            <span>报告日期：{{currentTime}}</span>
                         </div>
                     </div>
                 </td>
@@ -34,6 +34,7 @@
 
 <script>
 import {company} from '../config'
+import { getDateTime } from '../assets/js/help.js'
 export default {
     props:{
         titleConfig:{
@@ -54,21 +55,22 @@ export default {
     data(){
         return{
             baseData:{},
-            
+            currentTime:''
         }
     },
     computed:{
         sum(){
             var sub = 0;
             this.tableData.forEach(item => {
-                sub += Number(item.unit) * item.number
+                var num = item.unit.split('¥')[1].split('.')[0];
+                sub += Number(num) * item.number
             })
             return sub;
         }
     },
     mounted(){
         this.baseData = company;
-        
+        this.currentTime = getDateTime(2)
     },
 }
 </script>
@@ -91,16 +93,17 @@ export default {
     font-size: 14px;
 }
 .table-header th:first-child{
-    min-width: 120px;
+    min-width: 130px;
+    
 }
 .table-header th:nth-child(2){
     min-width: 200px;
 }
 .table-header th:nth-child(3){
-    min-width: 100px;
+    min-width: 80px;
 }
 .table-header th:nth-child(4){
-    min-width: 80px;
+    min-width: 50px;
 }
 .table-report td{
     border:1px solid var(--black-700);
@@ -120,17 +123,20 @@ export default {
 .table-report>tbody>tr>td:first-child{
     text-decoration: underline;
     font-weight: bold;
+    font-size: 13px;
+    color: #000;
 }
 .table-report .sum-tr > td{
     text-decoration: unset !important;
     text-align: right;
+    padding-right: 15px;
 }
 .table-report .sum-tr > td>span{
     color:var(--red);
 }
 
 .autograph{
-    height: 80px;
+    height: 60px;
 }
 .autograph .td-autograph{
     display: flex;
@@ -145,16 +151,16 @@ export default {
 }
 .report-date{
     text-align: right;
-    padding-right: 20px;
+    padding-right: 10px;
 }
 
 .tutor>span , .chapter>span{
     position: relative;
 }
 .tutor>span>img, .chapter>span>img{
-    width: 100px;
+    width: 70px;
     position: absolute;
-    top: -11px;
+    top: -5px;
 }
  .chapter>span>img{
     left: 64px;
@@ -162,6 +168,7 @@ export default {
  }
  .table-report .autograph > td{
     text-decoration: unset !important;
+    font-size: 13px !important;
 }
 .botten{
     text-decoration: underline;

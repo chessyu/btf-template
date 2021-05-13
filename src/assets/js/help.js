@@ -199,7 +199,7 @@ export function getDateTime(  type = 1,hasWeek=false){
                   return  year+month+day+hours+minutes+seconds;
                   break;
                 case 2:
-                  return  year+"年"+month+"月"+day+"日 "+hours+":"+minutes+":"+seconds+" "+ hasWeek ? week : '';
+                  return  (year+"-"+month+"-"+day+" "+hours+":"+minutes+":"+seconds)+" "+ (hasWeek ? week : '');
                   break;
               }
 }

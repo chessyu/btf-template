@@ -6,16 +6,16 @@
                 <div class="side-logo">
                     {{configData.companyName}}
                 </div>
-                <Menu active-name="home" theme="dark" width="auto" :class="menuitemClasses">
+                <Menu :active-name="activeName" theme="dark" width="auto" :class="menuitemClasses" @on-select="selectMenu">
                     <MenuItem name="home" :to="{name:'home'}">
                         <Icon type="ios-navigate" ></Icon>
                         <span>首页</span>
                     </MenuItem>
-                    <MenuItem name="care_program" :to="{name:'care'}">
+                    <MenuItem name="care" :to="{name:'care'}">
                         <Icon type="ios-search"></Icon>
                         <span>护肤方案</span>
                     </MenuItem>
-                    <MenuItem name="private_program" :to="{name:'private'}">
+                    <MenuItem name="private" :to="{name:'private'}">
                         <Icon type="ios-settings"></Icon>
                         <span>私护方案</span>
                     </MenuItem>
@@ -24,6 +24,13 @@
             <Layout>
                 <Header :style="{padding: 0}" class="layout-header-bar">
                     <Icon @click.native="collapsedSider" :class="rotateIcon" :style="{margin: '0 20px',position: 'absolute','left': 0, 'top': '20px'}" type="md-menu" size="24"></Icon>
+                    <Dropdown class="dropdown-box"  trigger="click" @on-click="dropdownChange" >
+                        <img class="dropdown" src="@/assets/img/login-h.png" alt="" >
+                        <span class="sys-name">系统管理员</span>
+                        <DropdownMenu slot="list">
+                            <DropdownItem name="loginOut" >退出登录</DropdownItem>
+                        </DropdownMenu>
+                    </Dropdown>
                 </Header>
                 <Content :style="{margin: '20px', background: '#fff', minHeight: '260px'}">
                     <router-view></router-view>
@@ -96,5 +103,19 @@
         transition: font-size .2s ease .2s, transform .2s ease .2s;
         vertical-align: middle;
         font-size: 22px;
+    }
+    .dropdown-box{
+        position: absolute;
+        right: 20px;
+        cursor: pointer;
+    }
+    .dropdown{
+        width: 45px;
+        vertical-align: middle;
+        
+    }
+    .sys-name{
+        font-size: 15px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 </style>
