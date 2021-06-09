@@ -33,7 +33,7 @@
                     </Dropdown>
                 </Header>
                 <Content :style="{margin: '20px', background: '#fff', minHeight: '260px'}">
-                    <router-view></router-view>
+                    <keep-alive><router-view></router-view></keep-alive> 
                 </Content>
             </Layout>
         </Layout>

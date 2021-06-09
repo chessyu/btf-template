@@ -48,7 +48,9 @@
                 <Select v-model="typeModel"  class="search-list" clearable placeholder="选择系列名称" style="width:200px;"  @on-change="change('type',typeModel)">
                     <Option v-for="(item,index) in typeList" :value="item" :key="item.value +'_'+ index">{{ item }}</Option>
                 </Select>
-                
+                <Select v-model="effectModel"  class="search-list" clearable placeholder="选择适应症" style="width:200px;"  @on-change="effectChange('effect',effectModel)">
+                    <Option v-for="(item,index) in effectList" :value="item" :key="item.value +'_'+ index">{{ item }}</Option>
+                </Select>
             </div>
             <Table class="care-table" :height="tableHeight" stripe :columns="titleConfig" :data="tableData" @on-selection-change="selectData">
                 <!-- <template slot-scope="{ row,index }" slot="features">
@@ -83,12 +85,19 @@
                     <div class="prodct-ul-weight">
                         <RadioGroup v-model="item.Milligram" @on-change="radioChange(item)">
                             <Radio :label="item.Milligram" v-for="(item,index) in item.weight" :key="index" style="display:'flex'" >
-                                <span class="content-span">规格：{{item.Milligram}}g</span><span  class="content-span">价格：¥{{item.price}}.00</span>
+                                <span class="content-span" style="margin-right:10px;">规格：{{item.Milligram}}g</span>
+                                <span  class="content-span">价格：¥<input type="number" style="width:60px;text-align: center;border:none;" v-model="item.price" @blur="changePrice(item)">.00</span>
                             </Radio>
                         </RadioGroup>
                     </div>
                     <div  class="prodct-ul-sub">
-                        <InputNumber  v-model="item.sub" :min="1"  />
+                        <InputNumber  v-model="item.sub" :min="1" @on-change="subChange(item)" />
+                    </div>
+                </li>
+                <li class="flex">
+                    <div class="flex-name">合计</div>
+                    <div class=" prodct-ul-features">
+                       ¥ {{dataPriceSub}}
                     </div>
                 </li>
             </ul>
@@ -125,7 +134,6 @@ export default {
                 hint:'',
                 attentions:''
             },
-
             productList:[],
             stepsData:[
                 {
@@ -151,6 +159,11 @@ export default {
                     title: '产品名称',
                     key: 'name',
                     width:180,
+                },
+                {
+                    title:"适应症",
+                    key:"effect",
+                    width:110
                 },
                 {
                     title: '产品功效',
@@ -195,10 +208,22 @@ export default {
             tableHeight:0,
             selectionData:[],
             typeModel:'',
-            typeList:[]
+            typeList:[],
+            effectModel:'',
+            effectList:[],
+            dataPriceSub:0
 
         }
     },
+    // computed:{
+    //     dataPriceSub(){
+    //         var data = 0;
+    //         this.selectionData.map(keys => {
+    //             data += +keys.price;
+    //         })
+    //         return data;
+    //     }
+    // },
     mounted(){
         this.skinCareList = skinCare;
        
@@ -217,12 +242,32 @@ export default {
             if(this.typeList.indexOf(item.type) === -1){
                 this.typeList.push(item.type);
             }
+            if(this.effectList.indexOf(item.effect) === -1){
+                this.effectList.push(item.effect);
+            }
             return item;
         });
         
         this.tableHeight = window.screen.height - 420;
     },
     methods:{
+        changePrice(row){
+            this.selectionData = this.selectionData.map(keys =>{
+                keys.price = keys.weight.filter(item => item.Milligram == keys.Milligram)[0].price;
+                return keys;
+            })
+            this.initDataPrice();
+        },
+        initDataPrice(){
+            var data = 0;
+            this.selectionData.map(keys => {
+                data += +keys.price * keys.sub;
+            })
+            this.dataPriceSub = data;
+        },
+        subChange(row){
+            this.initDataPrice();
+        },
         selectRadio(val){
             this.skinCareList.forEach(item => {
                 if(val === item.name){
@@ -232,6 +277,7 @@ export default {
                     this.formItem.hint = item.hint;
                 }
             })
+            
         },
         renderTemplate(){
             this.setSkinCareData({
@@ -247,6 +293,9 @@ export default {
         next () {
             if(this.current === 2 ){
                 this.renderTemplate();
+            }else if(this.current == 1){
+                this.current += 1;
+                this.initDataPrice();
             }else{
                 this.current += 1;
             }
@@ -269,7 +318,17 @@ export default {
 
         radioChange(row){
             row.price = row.weight.filter(item=>item.Milligram == row.Milligram)[0].price;
-            
+            this.changePrice();
+        },
+        effectChange(type,value){
+            this.tableData = productList.filter(item => !value || item[type].includes(value));
+            this.tableData.forEach(item => {
+                this.selectionData.forEach(keys => {
+                    if(item.id === keys.id){
+                        item._checked = true;
+                    }
+                })
+            })
         }
     }
 }
@@ -395,16 +454,28 @@ export default {
 }
 .prodct-ul-features{
     flex: 1;
-    min-width: 400px;
+    min-width: 300px;
     padding: 0 15px;
 }
 .prodct-ul-weight{
-    width: 250px;
+    width: 350px;
     padding: 0 15px;
     text-align: left;
+    
 }
 .prodct-ul-sub{
     width: 100px;
     padding: 0 15px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    appearance: none; 
+    margin: 0; 
+}
+/* 火狐 */
+input{
+    -moz-appearance:textfield;
 }
 </style>

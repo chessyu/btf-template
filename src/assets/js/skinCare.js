@@ -4217,18 +4217,19 @@ export const skinCare = [{
 }]
 
 
-export const productList = [
+export const productList =  [
 	{
 		name: "氨基酸洁面膏",
 		features: "白色膏状，清洁同时保护表皮层的皮脂膜，洁面后清爽不紧绷",
 		weight: [{
 			Milligram: "100",
-			price: "98",
+			price: "128",
 		}, {
 			Milligram: "300",
 			price: "238",
 		} ],
 		type: "洁面系列",
+		effect:'通用肌肤',   //填写细分效果。比如：痘痘肌肤
 	},
 	
 	{
@@ -4239,11 +4240,12 @@ export const productList = [
 			price: "198",
 		}],
 		type: "洁面系列",
+		effect:'通用肌肤', 
 	},
 	
 	{
 		name: "玫瑰原液活肤水",
-		features: "萃取于蒸馏大马士革玫瑰精油时的原液，原液中保留了玫瑰花材新鲜的滋养精华，具有很好的亲肤性、粘附性及延展性，深层作用于肌肤，渗透补水，令肌肤充分保持滋润，帮助改善肌肤干燥、缺水现象，焕肤保湿修护于一体，让肌肤在淡淡花香环绕中愈加自然细腻、水润亮丽",
+		features: "萃取于蒸馏大马士革玫瑰精油时的原液，原液中保留了玫瑰花材新鲜的滋养精华，具有很好的亲肤性、粘附性及延展性，深层作用于肌肤，渗透补水，令肌肤充分保持滋润，帮助改善肌肤干燥、缺水现象，焕肤保湿修护于一体细腻、水润亮丽",
 		weight: [{
 			Milligram: "120",
 			price: "168",
@@ -4252,6 +4254,7 @@ export const productList = [
 			price: "298",
 		} ],
 		type: "活肤水系列",
+		effect:'美白祛斑肌肤', 
 	},
 	
 	{
@@ -4262,6 +4265,7 @@ export const productList = [
 			price: "168",
 		}],
 		type: "活肤水系列",
+		effect:'痘痘肌肤', 
 	},
 	
 	{
@@ -4272,6 +4276,7 @@ export const productList = [
 			price: "168",
 		}],
 		type: "活肤水系列",
+		effect:'舒缓肌肤', 
 	},
 	
 	{
@@ -4282,6 +4287,7 @@ export const productList = [
 			price: "168",
 		}],
 		type: "活肤水系列",
+		effect:'痘痘肌肤', 
 	},
 	
 	{
@@ -4289,35 +4295,38 @@ export const productList = [
 		features: "补水是普通产品的三倍；穿透力强，直达角质层的深处；含大量玻尿酸补水，锁水；修复防敏",
 		weight: [{
 			Milligram: "30",
-			price: "228",
+			price: "268",
 		}, {
 			Milligram: "100",
-			price: "368",
+			price: "398",
 		} ],
 		type: "原液系列",
+		effect:'通用肌肤', 
 	},
 	
 	{
 		name: "碧萝芷原液",
-		features: "蕴含水解欧洲李等精华成分，温和丰盈细腻为肌肤提供滋养成分，舒缓肌肤不适，改善干燥、粗糙、黯哑无光泽等现象，使肌肤由里而外透出莹亮光彩",
+		features: "蕴含水解欧洲李等精华成分，温和丰盈细腻为肌肤提供滋养成分，舒缓肌肤不适，祛斑，改善干燥、粗糙、黯哑无光泽等现象，使肌肤由里而外透出莹亮光彩",
 		weight: [{
 			Milligram: "30",
-			price: "238",
+			price: "298",
 		}, {
 			Milligram: "100",
 			price: "398",
 		} ],
 		type: "原液系列",
+		effect:'美白祛斑肌肤', 
 	},
 	
 	{
 		name: "葡萄籽原液",
-		features: "紧致小脸、深层修护、水润柔嫩、淡化细纹       平滑滋润肌肤，改善肌肤干纹，细纹，深入改善皮肤弹性，持续使用肌肤更显青春紧致",
+		features: "紧致小脸、深层修护、水润柔嫩、淡化细纹       平滑滋润肌肤，改善肌肤干纹，祛斑，深入改善皮肤弹性，持续使用肌肤更显青春紧致",
 		weight: [{
 			Milligram: "100",
 			price: "398",
 		} ],
 		type: "原液系列",
+		effect:'舒缓、美白祛斑、抗衰肌肤', 
 	},
 	
 	{
@@ -4328,6 +4337,7 @@ export const productList = [
 			price: "398",
 		} ],
 		type: "原液系列",
+		effect:'痘痘、美白祛斑肌肤', 
 	},
 	
 	{
@@ -4338,6 +4348,7 @@ export const productList = [
 			price: "398",
 		} ],
 		type: "原液系列",
+		effect:'痘痘肌肤', 
 	},
 	
 	
@@ -4346,9 +4357,10 @@ export const productList = [
 		features: "补水保湿、长效锁水，舒缓不适、修复受损肌肤",
 		weight: [{
 			Milligram: "30",
-			price: "228",
+			price: "268",
 		} ],
 		type: "原液系列",
+		effect:'舒缓肌肤', 
 	},
 	
 	
@@ -4360,6 +4372,7 @@ export const productList = [
 			price: "268",
 		}],
 		type: "眼部系列",
+		effect:'通用肌肤', 
 	},
 	
 	
@@ -4368,20 +4381,22 @@ export const productList = [
 		features: "蕴含多重植物精华和植物油、海藻糖、透明质酸钠等多种水润美肤成分，质地细腻丝滑，更易被皮肤吸收，为肌肤补充水分和养分，在肌肤上形成锁水膜，改善肌肤干燥，舒缓肌肤紧绷，令肌肤清润透靓",
 		weight: [{
 			Milligram: "60",
-			price: "268",
+			price: "298",
 		}],
 		type: "晶乳系列",
+		effect:'舒缓肌肤', 
 	},
 	
 	
 	{
 		name: "碧萝芷晶乳",
-		features: "特别添加美白成分，有效抑制黑色素的生产，加速黑色素代谢，令肌肤重现净白凝滑，弹性十足",
+		features: "纯植物提取美白成分，有效抑制黑色素的产生，加速黑色素代谢，令肌肤重现净白凝滑，弹性十足",
 		weight: [{
 			Milligram: "60",
 			price: "298",
 		} ],
 		type: "晶乳系列",
+		effect:'痘痘、美白祛斑肌肤', 
 	},
 	
 	
@@ -4393,6 +4408,7 @@ export const productList = [
 			price: "268",
 		} ],
 		type: "晶乳系列",
+		effect:'舒缓肌肤', 
 	},
 	
 	
@@ -4401,9 +4417,10 @@ export const productList = [
 		features: "含有皮肤镇静效果、修护敏感、舒缓养护肌肤，修护肌肤损伤，痘印、净肌舒缓、抗氧化、增强肌肤抵抗力、形成肌肤屏障，有保护由于阳光、风尘而受到刺激的皮肤",
 		weight: [{
 			Milligram: "100",
-			price: "268",
+			price: "298",
 		} ],
 		type: "晶乳系列",
+		effect:'舒缓、痘痘、紧致肌肤', 
 	},
 	
 	
@@ -4415,6 +4432,7 @@ export const productList = [
 			price: "198",
 		}],
 		type: "面膜系列",
+		effect:'舒缓、痘痘肌肤', 
 	},
 	
 	
@@ -4426,6 +4444,7 @@ export const productList = [
 			price: "298",
 		} ],
 		type: "面膜系列",
+		effect:'美白祛斑肌肤', 
 	},
 	
 	
@@ -4437,6 +4456,7 @@ export const productList = [
 			price: "298",
 		}],
 		type: "面膜系列",
+		effect:'紧致抗衰肌肤'
 	},
 	
 	
@@ -4448,6 +4468,7 @@ export const productList = [
 			price: "298",
 		}],
 		type: "面膜系列",
+		effect:'紧致抗衰肌肤', 
 	},
 	
 	
@@ -4459,6 +4480,7 @@ export const productList = [
 			price: "168",
 		} ],
 		type: "面膜系列",
+		effect:'舒缓、痘痘肌肤', 
 	},
 	
 	
@@ -4470,6 +4492,7 @@ export const productList = [
 			price: "198",
 		} ],
 		type: "眼部系列",
+		effect:'通用肌肤', 
 	},
 	
 	
@@ -4481,6 +4504,7 @@ export const productList = [
 			price: "298",
 		}],
 		type: "眼部系列",
+		effect:'通用肌肤', 
 	},
 	
 	
@@ -4489,12 +4513,13 @@ export const productList = [
 		features: "蕴含多种精华成分，提供肌肤所需水分与营养，有效的滋养肌肤，改善干燥、粗糙，让肌肤保持年轻状态，紧致肌肤，柔软紧实，光滑如丝，令肌肤细致而充满弹性",
 		weight: [{
 			Milligram: "30",
-			price: "268",
+			price: "298",
 		}, {
 			Milligram: "300",
 			price: "398",
 		} ],
 		type: "霜系列",
+		effect:'舒缓肌肤', 
 	},
 	
 	
@@ -4506,6 +4531,7 @@ export const productList = [
 			price: "298",
 		}],
 		type: "霜系列",
+		effect:'美白祛斑肌肤', 
 	},
 	
 	
@@ -4517,6 +4543,7 @@ export const productList = [
 			price: "238",
 		}],
 		type: "防护系列",
+		effect:'通用肌肤', 
 	},
 	
 	
@@ -4528,6 +4555,7 @@ export const productList = [
 			price: "238",
 		}],
 		type: "防护系列",
+		effect:'提白肌肤', 
 	},
 	
 	
@@ -4539,6 +4567,7 @@ export const productList = [
 			price: "598",
 		}],
 		type: "内调系列",
+		effect:''
 	},
 	
 	
@@ -4550,6 +4579,7 @@ export const productList = [
 			price: "498",
 		}],
 		type: "内调系列",
+		effect:''
 	},
 	
 	
@@ -4561,6 +4591,7 @@ export const productList = [
 			price: "498",
 		}],
 		type: "内调系列",
+		effect:''
 	},
 	
 	
@@ -4572,6 +4603,7 @@ export const productList = [
 			price: "498",
 		}],
 		type: "内调系列",
-	},
+		effect:''
+	}
 ]
 	
