@@ -4429,7 +4429,7 @@ export const productList =  [
 		features: "精粹提取物，可激发皮肤自身保湿能力，给肌肤补充水分，让肌肤保持水润状态。水木黏蛋白能增强表皮凝聚力，保护皮肤对抗环境压力，防止细胞损伤，同时可修护肌肤受损细胞。科伦比亚冰川水中含有大量矿物质元素，可增加肌肤弹性，滋润肌肤，提亮肤色，打造元气美肌",
 		weight: [{
 			Milligram: "25",
-			price: "198",
+			price: "228",
 		}],
 		type: "面膜系列",
 		effect:'舒缓、痘痘肌肤', 
@@ -4501,7 +4501,7 @@ export const productList =  [
 		features: "紧致水润、提拉眼线、滋养修护，即时紧致眼周肌肤。持续使用能增加肌肤弹性，改善及淡化眼周皱纹、呈现弹嫩饱满年轻光彩",
 		weight: [{
 			Milligram: "25",
-			price: "298",
+			price: "328",
 		}],
 		type: "眼部系列",
 		effect:'通用肌肤', 
@@ -4540,7 +4540,7 @@ export const productList =  [
 		features: "水润配方、清透无感、不油腻闷痘、有效的保护肌肤应对紫外线的伤害",
 		weight: [{
 			Milligram: "30",
-			price: "238",
+			price: "268",
 		}],
 		type: "防护系列",
 		effect:'通用肌肤', 
