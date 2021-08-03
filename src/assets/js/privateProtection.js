@@ -395,3 +395,78 @@ export const privateProtection = [{
 		"departmentName": "总公司"
 	}
 }]
+
+export const productList = [
+	{
+		name: "XXX产品信息",
+		features: " XXXXXXX产品描述",
+		weight: [{
+			Milligram: "100",
+			price: "128",
+		}, {
+			Milligram: "300",
+			price: "238",
+		} ],
+		type: "A",
+		effect:'C',   //填写细分效果。比如：痘痘肌肤
+	},
+	
+	{
+		name: "XXXX产品信息",
+		features: "XXXXXXXXXXXXXXX产品描述",
+		weight: [{
+			Milligram: "100",
+			price: "198",
+		}],
+		type: "B",
+		effect:'C', 
+	},
+	{
+		name: "XXX产品信息",
+		features: " XXXXXXX产品描述",
+		weight: [{
+			Milligram: "100",
+			price: "128",
+		}, {
+			Milligram: "300",
+			price: "238",
+		} ],
+		type: "A",
+		effect:'C',   //填写细分效果。比如：痘痘肌肤
+	},
+	
+	{
+		name: "XXXX产品信息",
+		features: "XXXXXXXXXXXXXXX产品描述",
+		weight: [{
+			Milligram: "100",
+			price: "198",
+		}],
+		type: "B",
+		effect:'C', 
+	},
+	{
+		name: "XXX产品信息",
+		features: " XXXXXXX产品描述",
+		weight: [{
+			Milligram: "100",
+			price: "128",
+		}, {
+			Milligram: "300",
+			price: "238",
+		} ],
+		type: "A",
+		effect:'C',   //填写细分效果。比如：痘痘肌肤
+	},
+	
+	{
+		name: "XXXX产品信息",
+		features: "XXXXXXXXXXXXXXX产品描述",
+		weight: [{
+			Milligram: "100",
+			price: "198",
+		}],
+		type: "B",
+		effect:'C', 
+	},
+]
