@@ -77,9 +77,9 @@
 
         <div class="care-prodct" v-show="current == 2">
             <ul class="product-ul">
-                <li v-for="(item,index) in selectionData" :key="item.id" class="flex">
-                    <div class="flex-name" v-if="index !== selectionData.length - 1">{{item.name}}</div>
-                    <Input class="flex-name" style="text-align: center;" v-else type="text" v-model="item.name" />
+                <li v-for="(item) in selectionData" :key="item.id" class="flex">
+                    <!-- <div class="flex-name" v-if="index !== selectionData.length - 1">{{item.name}}</div> -->
+                    <Input class="flex-name" style="text-align: center;"   type="text" v-model="item.name" />
                     <div class=" prodct-ul-features">
                         <Input v-model="item.features" type="textarea" :autosize="{minRows: 2,maxRows: 5}" ></Input>
                     </div>
