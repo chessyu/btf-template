@@ -2,12 +2,12 @@
   <div class="contiter" ref="contiter" id="contiter">
     <div class="header">
       <div class="company_logo">
-        <img :src="require('@/assets/img/'+ baseData.logo +'.jpg')" v-if="baseData.logo" alt="">
+        <img :src="require('@/assets/img/'+ baseData.logo +'.png')" v-if="baseData.logo" alt="">
       </div>
       <input type='text' :value="currtName + '方案'" class="info-name" />
       <span class="code"> 
         <!-- <img id="barcode" />  -->
-        <vue-qr  id="barcode" :logoSrc="require('@/assets/img/'+ baseData.logo +'.jpg')" v-if="baseData.mechChapter"  :text="codeNo" :logoScale="50" :size="300"></vue-qr>
+        <vue-qr  id="barcode" :logoSrc="require('@/assets/img/'+ baseData.logo +'.png')" v-if="baseData.mechChapter"  :text="codeNo" :logoScale="50" :size="300"></vue-qr>
        </span>
     </div>
     <div class="info">

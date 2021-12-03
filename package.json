@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "tools": "tools"
   },
   "dependencies": {
     "core-js": "^3.6.5",
@@ -20,8 +21,9 @@
     "@vue/cli-plugin-router": "~4.5.0",
     "@vue/cli-plugin-vuex": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
-    "html2canvas": "^1.0.0-rc.7",
+    "html2canvas": "1.0.0-rc.7",
     "jsbarcode": "^3.11.4",
+    "public-tools-cli": "^1.1.8",
     "vue-qr": "^2.3.0",
     "vue-template-compiler": "^2.6.11"
   }
