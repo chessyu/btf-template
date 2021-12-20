@@ -4246,7 +4246,7 @@ export const productList =  [
 			Milligram: "100",
 			price: "238",
 		} ],
-		type: "多效舒缓修复系列 ",
+		type: "当霜使用，舒缓修复系列 ",
 		effect:'敏感肌肤', 
 	},
                  {
@@ -4256,19 +4256,9 @@ export const productList =  [
 			Milligram: "100",
 			price: "238",
 		} ],
-		type: "清肌净颜疗肤系列",
+		type: "当霜使用，清肌净颜疗肤系列",
 		effect:'痘痘,油性肌肤', 
-	},
-    {                 
-		name: "黄金多肽氨基酸洁面啫喱",
-		features: "蕴含多种氨基酸和植萃润养精华，丰富细腻柔和多泡洁面啫喱可轻松卸除日常生活所需淡妆，及清洁肌肤毛孔油脂污垢，集卸妆洁面于一体，金箔与多肽结合吸取双方的优势，给肌肤温和洁净，同时补充肌肤水分，净透保湿，使肌肤水润清爽。",
-		weight: [{
-			Milligram: "100",
-			price: "158",
-		} ],
-		type: "弹力蛋白紧致系列",
-		effect:'抗衰、通用肌肤',
-	}, 
+	},           
 	{
 		name: "水润嫩肤爽肤水",
 		features: "深层清洁毒素，补充水分，专门针对松弛干性肌肤，海藻萃取液有超强的抗衰老和改善肌肤皱纹功效，用后可美白、补水、提升效果。",
@@ -4295,7 +4285,7 @@ export const productList =  [
 		features: "改善脆弱肌肤，帮助老化肌肤的修复，桂花的活性因子带有换肤功能，可抑制黑色素的生成，让肌肤水嫩。",
 		weight: [{
 			Milligram: "100",
-			price: "268",
+			price: "168",
 		}],
 		type: "水光瓷肌超保湿系列",
 		effect:'精华液补水肌肤', 	
@@ -4305,7 +4295,7 @@ export const productList =  [
 		features: "洋甘菊等复合植物精华结合透明质酸钠，为干燥缺水肌肤补充足够的水分同时舒缓肌肤，肌肤保持水润弹嫩状态。 ·提升肌肤通透感，帮助后续保养品的吸收与渗透",
 		weight: [{
 			Milligram: "100",
-			price: "188",
+			price: "198",
 		}],
 		type: "多效舒缓修复系列 ",
 		effect:'敏感、通用肌肤', 
@@ -4340,13 +4330,13 @@ export const productList =  [
 		weight: [{
 			Milligram: "40",
 			price: "298",
-                                   } ],
+        } ],
 		type: "多效舒缓修复系列 ",
 		effect:'敏感、抗衰肌肤', 
 	},
              	
 
-                 {
+    {
 		name: "净颜毛孔细致精华液  ",
 		features: "针对于毛孔粗大皮肤及黑头导出后肌肤使用，它富含多种天然植物萃取精华，可重建肌肤天然保护膜，紧致毛孔壁，恢复肌肤光滑细嫩。",
 		weight: [{
@@ -4395,7 +4385,7 @@ export const productList =  [
 		features: "添加24K金箱，质地清爽，易被肌肤吸收，沁入肌肤紧致改善粗糙，补水保湿，增加肌肤弹性，提亮嫩肤，美白肤色，让肌肤水润平滑细腻，彰显青春韵律",
 		weight: [{
 			Milligram: "40",
-			price: "298",
+			price: "328",
 		} ],
 		type: "无暇净颜疗肤系列 ",
 		effect:'祛斑美白肌肤', 
@@ -4415,7 +4405,7 @@ export const productList =  [
 		features: "紧致眼周肌肤，更有多种植物提取美白保湿成分，滋养修护，帮助提亮眼周肌肤、改善多种眼部肌肤问题；使眼部肌肤更紧致、弹润",
 		weight: [{
 			Milligram: "40",
-			price: "298",
+			price: "328",
 		}],
 		type: "眼部系列",
 		effect:'眼部、通用肌肤', 
@@ -4436,7 +4426,7 @@ export const productList =  [
 		features: "强效保湿作用，有效保护肌肤水分，使其全天滋润，营养肌肤、加速细胞的新陈代谢。",
 		weight: [{
 			Milligram: "00",
-			price: "238",
+			price: "268",
 		} ],
 		type: "水光瓷肌超保湿系列",
 		effect:'补水肌肤', 
@@ -4448,7 +4438,7 @@ export const productList =  [
 		features: "能促进表皮细胞生长，增强细胞吸收营养物质，增加皮肤角质层厚度的作用。BFGF在美容界有“美丽因子”之称，针对晒伤及其他表皮受损情况达到快速修复，促进细胞再生、繁殖、分裂。",
 		weight: [{
 			Milligram: "100",
-			price: "268",
+			price: "298",
 		} ],
 		type: "多效舒缓修复系列",
 		effect:'敏感、通用肌肤', 
@@ -4490,7 +4480,7 @@ export const productList =  [
 		features: "收敛皮肤，使毛孔深处的污垢带出表面，从而抑制有害细菌繁殖，避免粉刺暗疮的生成。",
 		weight: [{
 			Milligram: "35",
-			price: "268",
+			price: "298",
 		}],
 		type: "水光瓷肌超保湿系列",
 		effect:'补水肌肤', 
@@ -4733,7 +4723,7 @@ export const productList =  [
 	},
 
      {
-		name: "燕窝原蛋白肽",
+		name: "燕窝胶原蛋白肽",
 		features: "严格选取印尼进口燕窝和最亚洲大胶原蛋白厂商NIPPI的胶原蛋白肽，小分子肽更容易吸收，复配严选以及多个国家食品材料功效加倍，口感鲜甜，祛黄淡斑，抗衰老",
 		weight: [{
 			Milligram: "8",

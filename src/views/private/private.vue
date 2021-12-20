@@ -153,11 +153,11 @@ export default {
                     width:110
                 },
                 {
-                    title: '产品功效',
-                    key: 'features',
-                    minWidth:300
-                    // slot:'features'
+                    title:"系列",
+                    key:"type",
+                    width:110
                 },
+                
                 {
                     title: '规格/价格',
                     key: 'weight',
@@ -185,10 +185,12 @@ export default {
                     // slot:'sub'
                 },
                 {
-                    title:"系列",
-                    key:"type",
-                    width:110
-                }
+                    title: '产品功效',
+                    key: 'features',
+                    minWidth:300
+                    // slot:'features'
+                },
+                
             ],
             tableData:[],
             queryData:'',
